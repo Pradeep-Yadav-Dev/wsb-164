@@ -1,0 +1,167 @@
+.body{
+	background: black;
+	margin: 0;
+	padding: 0;
+
+}
+.row-1{
+	width: 980px;
+	height: 50px;
+	margin: auto;
+	background-color: #343130;
+	color: white;
+	display: flex;
+	justify-content: space-between;
+	padding: 0px 10px;
+}
+.row-1-left{
+	display: flex;
+	align-items: center;
+	gap: 10px;
+}
+.row-1-right{
+	display: flex;
+	align-items: center;
+	gap: 10px;
+}
+
+.row-1-left img{
+	width: 20px;
+	height: 20px;
+}
+
+.row-1-right img{
+	width: 20px;
+	height: 20px;
+}
+
+/*row-2*/
+.row-2{
+	width: 1000px;
+	height: 170px;
+	background-color: white;
+	margin: auto;
+	display: flex;
+	align-items: end;
+}
+.row-2-left{
+	width: 30%;
+	height: 100%;
+/*	border: 2px solid darkred;*/
+
+}
+.row-2-right{
+	width: 70%;
+	height: 50px;
+/*	border: 2px solid darkred;*/
+	padding: 10px 0px;
+}
+.row-2-right .myUl{
+	list-style: none;
+	display: flex;
+	justify-content: space-evenly;
+	font-size: 25px;
+	font-weight: bold;
+
+}
+
+/*row-3*/
+
+.row-3{
+	width: 1000px;
+	height: 700px;
+	background-color: #F1F0EF;
+	margin: auto;
+	padding: 1px;
+
+}
+
+.row-3-inner{
+	width: 960px;
+	height: 95.5%;
+	background-color: white;
+	margin-left: 20px;
+	margin-top: 20px;
+	display: flex;
+	justify-content: space-between;
+}
+.row-3-left{
+	width: 30%;
+	height: 100%;
+/*	background-color: red;*/
+}
+.row-3-right{
+	width: 68%;
+	height: 100%;
+		border: 2px solid blue;
+}
+
+.row-3-left-top{
+	width: 100%;
+	height: 50%;
+
+}
+.row-3-left-bottom{
+	width: 100%;
+	height: 50%;
+	border: 2px solid grey;
+}
+
+.row-3-left-top-box{
+	width: 96%;
+	height: 50px;
+	background-color: #00A8EC;
+	font-size: 22px;
+	font-weight: bold;
+	text-align: center;
+	line-height: 50px;
+	color: white;
+	margin: 5px;
+}
+
+.row-3-form-Heading{
+	width: 100%;
+	height: 80px;
+/*	border: 2px solid darkred;*/
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	font-size: 25px;
+	font-weight: bold;
+}
+
+.myInput{
+	width: 500px;
+	margin: 10px;
+	padding: 10px;
+}
+
+.btn{
+	padding: 20px 25px;
+	background-color: skyblue;
+	border: none;
+	border-radius: 10px;
+	display: block;
+}
+
+.area{
+	width: 500px;
+	height: 120px;
+	resize: none;
+}
+
+
+.row{
+	display: flex;
+	margin: 10px;
+	padding: 10px;
+}
+
+.rr{
+	width: 20%;
+/*	border: 1px solid red;*/
+}
+.ll{
+	width: 80%;
+/*	border: 1px solid red;*/
+}

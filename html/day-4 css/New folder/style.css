@@ -1,0 +1,14 @@
+.firstDiv{
+	width: 400px;
+	height: 400px;
+	background-color: darkred;
+	color: white;
+	font-size: 30px;
+	font-weight: bold;
+	text-align: center;
+/*	line-height: 400px;*/
+	font-style: italic;
+	/*	text-decoration: underline;*/
+	/*text-decoration: overline;*/
+	text-decoration: line-through;
+}    

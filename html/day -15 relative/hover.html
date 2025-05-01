@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            background-color: black;
+        }
+
+        .main {
+            width: 800px;
+            height: 600px;
+            margin: auto;
+            border: 2px solid red;
+            position: relative;
+        }
+
+        .face {
+            width: 200px;
+            height: 200px;
+            background-color: blue;
+            border-radius: 50%;
+            position: absolute;
+            top: 6%;
+            left: 33%;
+        }
+
+        .leftEye {
+            width: 30px;
+            height: 60px;
+            background-color: white;
+            border-radius: 50%;
+            position: absolute;
+            top: 18%;
+            left: 22%;
+        }
+
+        .blackEye {
+            width: 15px;
+            height: 30px;
+            background-color: black;
+            border-radius: 50%;
+            position: absolute;
+            left: 25%;
+            top: 48%;
+        }
+
+        .innerWhite {
+            width: 5px;
+            height: 10px;
+            background-color: white;
+            border-radius: 50%;
+            position: absolute;
+            top: 53%;
+            left: 30%;
+        }
+
+        .rightEye {
+            width: 30px;
+            height: 60px;
+            background-color: white;
+            border-radius: 50%;
+            position: absolute;
+            top: 18%;
+            left: 55%;
+        }
+
+        .noise {
+            width: 15px;
+            height: 10px;
+            background-color: red;
+            border-radius: 5px;
+            position: absolute;
+            top: 106px;
+            left: 82px;
+
+        }
+
+        .mouth {
+            width: 60px;
+            height: 40px;
+            background-color: white;
+            border-radius: 0px 0px 50px 50px;
+            position: absolute;
+            top: 305%;
+            left: -100%;
+        }
+
+        .mouthinner {
+            width: 40px;
+            height: 30px;
+            background-color: red;
+            border-radius: 0px 0px 50px 50px;
+            position: absolute;
+            top: 1%;
+            left: 14%;
+        }
+
+        .tie {
+            width: 70px;
+            height: 20px;
+            background-color: red;
+            border-radius: 10px;
+            position: absolute;
+            top: 95%;
+            left: 32%;
+            z-index:10;
+        }
+
+        .innerTie {
+            width: 20px;
+            height: 20px;
+            background-color: white;
+            border-radius: 50%;
+            position: absolute;
+            top: 0px;
+            left: 22px;
+        }
+
+        .body {
+            width: 250px;
+            height: 290px;
+            border-radius: 15px;
+            background-color: blue;
+            position: absolute;
+            top: 39%;
+            left: 31%;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="main">
+        <div class="face">
+
+            <div class="leftEye">
+                <div class="blackEye">
+                    <div class="innerWhite"></div>
+                </div>
+            </div>
+
+            <div class="rightEye">
+                <div class="blackEye">
+                    <div class="innerWhite"></div>
+
+                </div>
+
+            </div>
+            <div class="noise" </div>
+                <div class="mouth">
+                    <div class="mouthinner"></div>
+                </div>
+
+            </div>
+            <div class="tie">
+                <div class="innerTie"></div>
+            </div>
+
+        </div>
+
+
+        <div class="body"></div>
+
+    </div>
+
+</body>
+
+</html>

@@ -1,0 +1,91 @@
+.mainDiv{
+	width: 1000px;
+	height: 540px;
+	border: 2px solid;
+	margin: auto;
+}
+
+.row-1{
+	width: 1000px;
+	height: 100px;
+	border: 2px solid darkred;
+	text-align: center;
+	line-height: 100px;
+	font-size: 22px;
+	font-weight: bold;
+}
+.row-2{
+	width: 1000px;
+	height: 40px;
+	border: 2px solid darkred;
+	display: flex;
+}
+.row-2-box{
+	width: 200px;
+	height: 40px;
+	border: 2px solid black;
+	text-align: center;
+	line-height: 40px;
+}
+
+.row-3{
+	width: 1000px;
+	height: 200px;
+	border: 2px solid blue;
+	display: flex;
+}
+
+.row-3 .left{
+	width: 250px;
+	height: 200px;
+	border: 2px solid blue;
+}
+
+.row-3 .right{
+	width: 746px;
+	height: 200px;
+	border: 2px solid blue;
+}
+
+.row-3-box-left{
+	width: 246px;
+	height: 36px;
+	border: 2px solid;
+}
+
+.row-3 .right img{
+	width: 746px;
+	height: 200px;
+}
+
+.row-6{
+	width: 1000px;
+	height: 50px;
+	border: 2px solid darkred;
+	text-align: center;
+	line-height: 50px;
+}
+
+.about-row-3{
+	width: 1000px;
+	height: 350px;
+	display: flex;
+}
+.about-row-3 .left{
+	width: 250px;
+	height: 200px;
+	border: 2px solid blue;
+}
+.about-row-3 .right{
+	width: 750px;
+	height: 350px;
+	border: 2px solid greenyellow;
+}
+
+.about-row-3 .right h1{
+	text-align: center;
+}
+.about-row-3 .right p{
+	padding: 0px 40px;
+	text-align: justify;
+}
