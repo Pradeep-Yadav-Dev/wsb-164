@@ -1,0 +1,50 @@
+/* for mobile */
+@media only screen and (min-width:200px) and (max-width:567px) {
+
+    /* header css */
+    .headerInner .number {
+        display: none;
+    }
+
+    .headerInner .logo {
+        margin: auto;
+    }
+
+    /* banner */
+    .innerBanner .left {
+        width: 100%;
+        text-align: center;
+    }
+
+    .innerBanner .right {
+        width: 90%;
+        margin: auto;
+    }
+
+    .innerBanner .left h2 {
+        font-size: 25px;
+        padding: 0px;
+    }
+
+    .innerBanner .left h3 {
+        font-size: 21px;
+        padding: 0px;
+    }
+    .innerBanner .left h4 {
+        font-size: 12px;
+        padding: 17px 0px;
+    }
+    .innerBanner .left span{
+        font-size: 32px;
+    }
+}
+
+
+
+
+
+
+
+
+/* for tab */
+@media only screen and (min-width:568px) and (max-width:991px) {}

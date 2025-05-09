@@ -1,0 +1,37 @@
+@media only screen and (min-width:200px) and (max-width:567px){
+    header{
+        background-color: pink;
+    }
+
+    header aside:nth-child(1){
+        width: 25%;
+    }
+
+    header aside:nth-child(2){
+        display: none;
+    }
+
+    header aside:nth-child(3){
+        display: block;
+     }
+     header aside:nth-child(3) i{
+        font-size: 25px;
+     }
+
+
+     .mobileMenu{
+        display: block;
+        width: 50vw;
+        height: 80vh;
+        background-color: #ccc;
+        position: absolute;
+        top: 0%;
+        left: -80%;
+        font-size: 22px;
+        transition: 1s;
+     }
+
+     .myI:hover + .mobileMenu{
+        left: 0%;
+     }
+}

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            background-color: black;
+        }
+
+        @keyframes solar {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        .main {
+            width: 800px;
+            height: 600px;
+            border: 2px solid red;
+            margin: auto;
+            position: relative;
+        }
+
+        .sun {
+            width: 120px;
+            height: 120px;
+            background-color: orange;
+            border-radius: 50%;
+            position: absolute;
+            top: 40%;
+            left: 40%;
+        }
+
+        .orbit-1 {
+            width: 170px;
+            height: 170px;
+            border: 2px solid #ccc;
+            border-radius: 50%;
+            position: absolute;
+            top: 35%;
+            left: 37%;
+            animation: solar 2s 0s infinite linear;
+        }
+
+        .planate-1 {
+            width: 30px;
+            height: 30px;
+            background-color: aqua;
+            border-radius: 50%;
+            position: absolute;
+            top: -9%;
+            left: 37%;
+
+        }
+
+        .orbit-2 {
+            width: 200px;
+            height: 200px;
+            border: 2px solid #ccc;
+            border-radius: 50%;
+            position: absolute;
+            top: 32%;
+            left: 35%;
+            animation: solar 2s 1s infinite linear;
+        }
+
+        .planate-2 {
+            width: 30px;
+            height: 30px;
+            background-color: aqua;
+            border-radius: 50%;
+            position: absolute;
+            top: -9%;
+            left: 37%;
+
+        }
+    </style>
+</head>
+
+<body>
+    <div class="main">
+        <div class="sun"></div>
+
+        <div class="orbit-1">
+            <div class="planate-1"></div>
+        </div>
+
+        <div class="orbit-2">
+            <div class="planate-2"></div>
+        </div>
+    </div>
+</body>
+
+</html>

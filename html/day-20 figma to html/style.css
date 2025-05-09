@@ -1,0 +1,114 @@
+* {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+header {
+    width: 100%;
+    box-shadow: 0px 0px 10px 3px #ccc;
+    padding: 10px 0px;
+    position: sticky;
+    top: 0px;
+}
+
+nav {
+    max-width: 1200px;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.rightHeader button:nth-child(1) {
+    width: 166;
+    height: 40;
+    border-width: 1px;
+    border-radius: 8px;
+    padding-top: 10px;
+    padding-right: 18px;
+    padding-bottom: 10px;
+    padding-left: 18px;
+    color: #27AE60;
+    background: #FFFFFF;
+    margin-right: 20px;
+
+    border: 1px solid #27AE60;
+
+    box-shadow: 0px 1px 2px 0px #1018280D;
+
+
+}
+
+.rightHeader button:nth-child(2) {
+    width: 90;
+    height: 44;
+    border-width: 1px;
+    border-radius: 8px;
+    padding-top: 10px;
+    padding-right: 18px;
+    padding-bottom: 10px;
+    padding-left: 18px;
+    gap: 10px;
+    background: linear-gradient(93.77deg, #0ACEFE -6.36%, #2699FB 50.16%);
+    border: 1px solid;
+    border-image-source: linear-gradient(93.77deg, #0ACEFE -6.36%, #2699FB 50.16%);
+    box-shadow: 0px 1px 2px 0px #1018280D;
+    color: white;
+}
+
+/* banner css */
+
+#banner {
+    width: 100%;
+    /* border: 2px solid red; */
+}
+
+#banner .bannerInner {
+    max-width: 1200px;
+    margin: auto;
+    /* border: 2px solid red; */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.bannerInner aside:nth-child(1) {
+    width: 50%;
+    /* border: 1px solid; */
+}
+
+.bannerInner aside:nth-child(2) {
+    width: 50%;
+    border: 1px solid;
+}
+
+.bannerInner aside:nth-child(1) h1 {
+    font-family: Inter;
+    font-weight: 700;
+    font-size: 52px;
+    line-height: 68px;
+    letter-spacing: 0%;
+
+
+}
+
+.bannerInner aside:nth-child(1) h1 span {
+    font-family: Inter;
+    font-weight: 700;
+    font-size: 52px;
+    line-height: 68px;
+    letter-spacing: 0%;
+    color: #0ACEFE;
+    background-image: url("./images/Vector\ 63.png");
+    background-repeat: no-repeat;
+    background-position: 0% 100%;
+}
+
+.bannerInner aside:nth-child(1) ul li{
+    display: flex;
+    align-items: center;
+    margin: 10px 0px;
+    gap: 10px;
+
+}
