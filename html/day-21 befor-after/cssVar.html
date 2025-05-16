@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        :root {
+            --red: rgb(181, 23, 209);
+            --yellow: rgb(12, 196, 15);
+            --fSize: 25px;
+        }
+
+        .main {
+            display: flex;
+        }
+
+        .box {
+            width: 200px;
+            height: 200px;
+            background-color: var(--yellow);
+            margin: 10px;
+        }
+
+        .pradeep {
+            width: 300px;
+            height: 300px;
+            background-color: var(--yellow);
+            color: var(--red);
+            font-size: var(--fSize);
+        }
+
+        .innerDiv {
+            max-width: 1200px;
+            /* border: 5px solid red; */
+            margin: auto;
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .smallBox {
+            width: 31%;
+            margin: 1%;
+            box-shadow: 0px 0px 10px 3px #ccc;
+            border-radius: 15px;
+        }
+
+        .smallBox iframe {
+            width: 100%;
+            border-radius: 15px;
+        }
+
+        .smallBox h4 {
+            text-align: center;
+            padding: 10px 0px;
+        }
+
+        @media only screen and (min-width:200px) and (max-width:567px) {
+            .smallBox {
+                width: 100%;
+                margin: 20px 0px;
+                
+              
+            }
+        }
+
+        @media only screen and (min-width:568px) and (max-width:991px) {
+            .smallBox {
+                width: 48%;
+               margin: 1%;
+                
+              
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+
+    <!-- <div class="main">
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+    </div>
+
+
+    <div class="pradeep">
+        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Labore repellendus laborum, doloribus nisi quas illum sit consequuntur est libero mollitia vero, soluta debitis illo dolorum veniam fugit, consequatur cupiditate excepturi?
+    </div> -->
+
+
+    <div class="innerDiv">
+        <div class="smallBox">
+            <iframe src="https://www.youtube.com/embed/J4RbIkAQOEo" title="Scooty Packing- Packers &amp; Movers"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+            <h4>Bike Packing Video</h4>
+        </div>
+        <div class="smallBox">
+            <iframe src="https://www.youtube.com/embed/J4RbIkAQOEo" title="Scooty Packing- Packers &amp; Movers"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+            <h4>Bike Packing Video</h4>
+        </div>
+
+        <div class="smallBox">
+            <iframe src="https://www.youtube.com/embed/J4RbIkAQOEo" title="Scooty Packing- Packers &amp; Movers"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+            <h4>Bike Packing Video</h4>
+        </div>
+
+        <div class="smallBox">
+            <iframe src="https://www.youtube.com/embed/J4RbIkAQOEo" title="Scooty Packing- Packers &amp; Movers"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+            <h4>Bike Packing Video</h4>
+        </div>
+
+
+        <div class="smallBox">
+            <iframe src="https://www.youtube.com/embed/J4RbIkAQOEo" title="Scooty Packing- Packers &amp; Movers"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+            <h4>Bike Packing Video</h4>
+        </div>
+
+
+        <div class="smallBox">
+            <iframe src="https://www.youtube.com/embed/J4RbIkAQOEo" title="Scooty Packing- Packers &amp; Movers"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+            <h4>Bike Packing Video</h4>
+        </div>
+
+
+        <div class="smallBox">
+            <iframe src="https://www.youtube.com/embed/J4RbIkAQOEo" title="Scooty Packing- Packers &amp; Movers"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+            <h4>Bike Packing Video</h4>
+        </div>
+
+
+        <div class="smallBox">
+            <iframe src="https://www.youtube.com/embed/J4RbIkAQOEo" title="Scooty Packing- Packers &amp; Movers"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+            <h4>Bike Packing Video</h4>
+        </div>
+
+        <div class="smallBox">
+            <iframe src="https://www.youtube.com/embed/J4RbIkAQOEo" title="Scooty Packing- Packers &amp; Movers"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+            <h4>Bike Packing Video</h4>
+        </div>
+    </div>
+
+
+
+</body>
+
+</html>
