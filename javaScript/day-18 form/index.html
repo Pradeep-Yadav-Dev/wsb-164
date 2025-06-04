@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .main {
+            max-width: 1200px;
+            box-shadow: 0px 0px 10px 4px #ccc;
+            margin: 20px auto;
+            padding: 10px;
+        }
+
+        h2 {
+            text-align: center;
+        }
+
+        .row {
+            margin: 10px 0px;
+        }
+
+        .row label,
+        input {
+            width: 90%;
+            padding: 10px;
+            /* margin: 10px 0px; */
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: antiquewhite;
+            font-size: 22px;
+            outline: none;
+            border: none;
+        }
+        p{
+            margin: 0px;
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="main">
+        <h2> User Application Form </h2>
+
+        <form onsubmit="userForm(event)">
+            <div class="row">
+                <label>Enter Name :</label>
+                <input type="text" name="Uname" placeholder="Enter Name">
+                <p class="nameError" ></p>
+            </div>
+
+            <div class="row">
+                <label>Enter Email :</label>
+                <input type="email" name="Uemail" placeholder="Enter Email">
+            </div>
+
+            <div class="row">
+                <label>Enter Phone Number :</label>
+                <input type="number" name="Unumber" pattern="[0-9]{10}" placeholder="Enter Number">
+            </div>
+
+            <div class="row">
+                <label>Enter Password :</label>
+                <input type="password" name="Upassword" placeholder="Enter Password">
+            </div>
+
+            <button> Save </button>
+        </form>
+    </div>
+
+</body>
+<script>
+    let nameError=document.querySelector(".nameError")
+
+
+    let userForm = (event) => {
+        event.preventDefault() ///stop page refresh
+
+        let userObj = {
+            "name": event.target.Uname.value,
+            "email": event.target.Uemail.value,
+            "number": event.target.Unumber.value,
+            "password": event.target.Upassword.value,
+
+        }
+        if(userObj.name==""){
+           return alert("please enter name input")
+        }
+
+        if(userObj.email==""){
+           return alert("please enter email input")
+        }
+
+        if(userObj.number==""){
+           return alert("please enter number input")
+        }
+
+       
+        if(userObj.number.length<=10){
+            return alert("please enter Correct Number Formate")
+        }
+
+        if(userObj.password==""){
+           return alert("please enter password input")
+        }
+
+        /////////////////////////////////////////////////////////////
+
+        // if(userObj.name=="" || userObj.number=="" || userObj.password=="" || userObj.email=="" ){
+        //     alert("please full fill the the inputs")
+        // }
+
+        ////////////////////////////////////////////////////////
+
+        // if(userObj.name==""){
+        //     nameError.innerHTML="Please Enter The Value"
+        // }
+
+        
+
+        console.log(userObj)
+    }
+
+</script>
+
+</html>

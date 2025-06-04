@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .modal{
+            width: 500px;
+            height: 300px;
+            background-color: skyblue;
+            text-align: center;
+            position: fixed;
+            top: -100%;
+            left: 40%;
+            transition: 1s;
+        }
+        .active{
+            top: 10%;
+        }
+        span{
+            background-color: antiquewhite;
+            padding: 10px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <button > Show Modal </button>
+
+    <div class="modal ">
+        <h2> User Form  <span>X</span> </h2>
+    </div>
+</body>
+<script>
+
+    let btn=document.querySelector("button");
+    let modal=document.querySelector(".modal")
+    let span=document.querySelector("span")
+
+    btn.addEventListener("click", function(){
+        modal.classList.toggle("active")
+    } )
+
+
+    span.addEventListener("click",()=>{
+        modal.classList.remove("active")
+    })
+</script>
+</html>

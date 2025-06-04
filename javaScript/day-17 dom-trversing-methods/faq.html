@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .main {
+            max-width: 1200px;
+            /* border: 2px solid red; */
+            margin: auto;
+        }
+
+        .row {
+            width: 100%;
+            background-color: antiquewhite;
+        }
+
+        .row h2 {
+            background-color: bisque;
+            padding: 10px;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .row p {
+            font-size: 18px;
+            padding: 5px;
+            display: none;
+        }
+
+        .active {
+            display: block !important;
+        }
+        span{
+            /* background-color: blueviolet; */
+            padding: 10px;
+            /* color: white; */
+            position: absolute;
+            right: 5px;
+            top: 0px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="main">
+        <div class="row">
+            <h2> Question 1  <span>&#x2b;</span>  </h2>
+            <p class=""> Answer 1 Netflix is a streaming service that offers a wide variety of award-winning TV
+                shows, movies, anime, documentaries and more – on thousands of internet-connected devices. </p>
+        </div>
+
+        <div class="row">
+            <h2> Question 2 <span>&#x2b;</span> </h2>
+            <p> Answer 2 Netflix is a streaming service that offers a wide variety of award-winning TV shows, movies,
+                anime, documentaries and more – on thousands of internet-connected devices.</p>
+        </div>
+
+        <div class="row">
+            <h2> Question 3 <span>&#x2b;</span> </h2>
+            <p> Answer 3 Netflix is a streaming service that offers a wide variety of award-winning TV shows, movies,
+                anime, documentaries and more – on thousands of internet-connected devices.</p>
+        </div>
+
+        <div class="row">
+            <h2> Question 4 <span>&#x2b;</span> </h2>
+            <p> Answer 4 Netflix is a streaming service that offers a wide variety of award-winning TV shows, movies,
+                anime, documentaries and more – on thousands of internet-connected devices.</p>
+        </div>
+
+        <div class="row">
+            <h2> Question 5 <span>&#x2b;</span> </h2>
+            <p> Answer 5 Netflix is a streaming service that offers a wide variety of award-winning TV shows, movies,
+                anime, documentaries and more – on thousands of internet-connected devices.</p>
+        </div>
+
+        <div class="row">
+            <h2> Question 6 <span>&#x2b;</span> </h2>
+            <p> Answer 6 Netflix is a streaming service that offers a wide variety of award-winning TV shows, movies,
+                anime, documentaries and more – on thousands of internet-connected devices.</p>
+        </div>
+
+        <div class="row">
+            <h2> Question 7 <span>&#x2b;</span> </h2>
+            <p> Answer 7 Netflix is a streaming service that offers a wide variety of award-winning TV shows, movies,
+                anime, documentaries and more – on thousands of internet-connected devices.</p>
+        </div>
+
+        <div class="row">
+            <h2> Question 8 <span>&#x2b;</span> </h2>
+            <p> Answer 8 Netflix is a streaming service that offers a wide variety of award-winning TV shows, movies,
+                anime, documentaries and more – on thousands of internet-connected devices.</p>
+        </div>
+    </div>
+
+</body>
+<script>
+    let allH2 = document.querySelectorAll("h2")
+
+    allH2.forEach((v, i) => {
+
+        
+
+        
+        v.addEventListener("click", () => {
+            
+
+            allH2.forEach((value,index)=>{
+                if(index!=i){
+                    value.nextElementSibling.classList.remove("active")
+                     value.children[0].innerHTML="&#x2b;"
+                }
+            })
+
+            v.nextElementSibling.classList.toggle("active")
+            v.children[0].innerHTML="&#x2212;"
+        })
+    })
+</script>
+
+</html>

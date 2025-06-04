@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .main {
+            width: 1000px;
+            margin: auto;
+            border: 2px solid red;
+            padding: 10px;
+        }
+
+        .row1 {
+            width: 100%;
+            height: 400px;
+        }
+
+        .row1 img {
+            width: 100%;
+            height: 100%;
+        }
+
+        .row2 {
+            width: 100%;
+            height: 200px;
+            display: flex;
+        }
+
+        .row2 img {
+            width: 23%;
+            margin: 1%;
+            height: 100%;
+        }
+
+        .lightBox {
+            width: 400px;
+            height: 400px;
+            box-shadow: 0px 0px 10px 3px #ccc;
+            padding: 10px;
+            position: fixed;
+            top: 2%;
+            left: 5%;
+            background-color: white;
+            display: none;
+            border: 5px solid red;
+        }
+
+        .lightBox img {
+            width: 98%;
+            height: 100%;
+
+        }
+
+        .lightBox span {
+            background-color: blueviolet;
+            padding: 10px;
+            border-radius: 10px;
+            color: white;
+            position: absolute;
+            top: 2%;
+            right: 0%;
+            cursor: pointer;
+        }
+
+        .active{
+            display: block !important;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="main">
+        <div class="row1">
+            <img src="https://i.pinimg.com/736x/a4/11/f9/a411f94f4622cfa7c1a87f4f79328064.jpg" alt="">
+        </div>
+
+        <div class="row2">
+            <img onclick="smallImg(this)" src="https://i.pinimg.com/736x/8a/bd/4d/8abd4db1785d77da090ab7bb2357d3cb.jpg"
+                alt="">
+            <img onclick="smallImg(this)" src="https://i.pinimg.com/736x/44/db/9c/44db9ca184461dfc4255a5638cd3b245.jpg"
+                alt="">
+            <img onclick="smallImg(this)" src="https://i.pinimg.com/736x/59/5b/a7/595ba71c961479d71bdf7529c980b426.jpg"
+                alt="">
+            <img onclick="smallImg(this)" src="https://i.pinimg.com/736x/a8/12/9b/a8129b5dc5a04f2b16bdf7c44cf36a9e.jpg"
+                alt="">
+
+        </div>
+    </div>
+
+    <div class="lightBox">
+        <img src="https://i.pinimg.com/736x/a4/11/f9/a411f94f4622cfa7c1a87f4f79328064.jpg" class="lightBoxImg" alt="">
+
+        <span onclick="closeLightbox()" >X</span>
+    </div>
+
+</body>
+<script>
+    let bigImg = document.querySelector(".row1 img")
+    let lightBox = document.querySelector(".lightBox")
+    let lightBoxImg=document.querySelector(".lightBoxImg")
+    
+
+    // bigSrc=smallSRc
+    let smallImg = (samllUrl) => {
+
+        bigImg.src = samllUrl.src;
+        // lightBox.style.display = "block"
+        lightBox.classList.add("active")
+
+        lightBoxImg.src=samllUrl.src;
+        //  lightbox
+    }
+
+    let closeLightbox=()=>{
+        //  lightBox.style.display = "none"
+        lightBox.classList.remove("active")
+
+    }
+
+
+
+    
+
+
+
+
+
+</script>
+
+</html>

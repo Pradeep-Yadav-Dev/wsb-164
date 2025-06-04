@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+        .box{
+            border: 2px solid red;
+            margin: 50px auto;
+            width: 500px;
+            padding: 10px;
+            transition: 1s;
+        }
+
+        .active{
+            background-color: skyblue;
+            font-size: 22px;
+        }
+
+    </style>
+</head>
+<body>
+    <button onclick="addClass()"> add </button>
+    <button onclick="removeClass()"> remove </button>
+    <button onclick="toggleClass()"> toggle </button>
+
+    <div class="box "  >
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo impedit dolor numquam accusamus reprehenderit aliquam rem et laborum optio assumenda. Iure, ipsam iste asperiores unde possimus odio omnis accusamus sapiente?
+    </div>
+    
+</body>
+<script>
+
+    let box=document.querySelector(".box")
+
+    let addClass=()=>{
+       box.classList.add("active")
+    }
+
+    let removeClass=()=>{
+        box.classList.remove("active")
+    }
+
+    let toggleClass=()=>{
+        box.classList.toggle("active")
+    }
+
+</script>
+</html>

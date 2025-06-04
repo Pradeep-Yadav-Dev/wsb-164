@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+
+    // let myArr=[11,22,33,44,55,66,77,88,"ws","pp"]
+
+    // for(let i of myArr){
+    //     console.log(i)
+    // }
+
+    // for (let a in myArr){
+    //     console.log(  myArr[a] )
+    // }
+
+    ///////////////////////////////////////////////////////////////////////
+
+    let x = [-22, -88, 234,123, -150, 0, 22, 45, 2, 11]
+    let maxValue = -Infinity
+    let seMaxValue = -Infinity
+
+    for (let i of x) {
+
+        if (maxValue < i) {
+            maxValue = i
+        }
+    }
+
+    for (let p of x) {
+        if(seMaxValue <p && p<maxValue ){
+            seMaxValue=p
+        }
+    }
+
+    console.log(maxValue)
+
+    console.log(seMaxValue)
+
+
+</script>
+
+</html>
