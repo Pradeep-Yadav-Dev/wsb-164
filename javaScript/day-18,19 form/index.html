@@ -35,9 +35,19 @@
             outline: none;
             border: none;
         }
-        p{
+
+        p {
             margin: 0px;
             color: red;
+        }
+        table{
+            width: 100%;
+            margin-top: 20px;
+            text-align: center;
+        }
+        table thead{
+            background-color: #ccc;
+            font-weight: bold;
         }
     </style>
 </head>
@@ -51,7 +61,7 @@
             <div class="row">
                 <label>Enter Name :</label>
                 <input type="text" name="Uname" placeholder="Enter Name">
-                <p class="nameError" ></p>
+                <p class="nameError"></p>
             </div>
 
             <div class="row">
@@ -71,11 +81,58 @@
 
             <button> Save </button>
         </form>
+
+        <!-- tabel -->
+
+        <table border="2"  >
+            <thead>
+                <td>Sr.</td>
+                <td>Name</td>
+                <td>Email</td>
+                <td>Number</td>
+                <td>Password</td>
+                <td></td>
+            </thead>
+
+            <tbody>
+                
+            </tbody>
+        </table>
     </div>
+
+    <!-- <div class="test"></div> -->
 
 </body>
 <script>
-    let nameError=document.querySelector(".nameError")
+    let nameError = document.querySelector(".nameError")
+    let tbody=document.querySelector("tbody")
+
+    let test = document.querySelector(".test")
+
+    // let num=Math.random()
+    // test.innerHTML=`this is my random number ${num} `
+
+    // let sum=sum+1
+    // sum+=1
+    // display Data
+    let displayData = () => {
+        let localData = JSON.parse(localStorage.getItem("wsb-164")) || []
+        
+        localData.forEach( (v,i)=>{
+            tbody.innerHTML+=`
+                <tr>
+                    <td> ${i+1} </td>
+                    <td>ravi</td>
+                    <td>ravi@gmail.com</td>
+                    <td>1234567890</td>
+                    <td>Password@123</td>
+                    <td> <button> Delete </button> </td>
+                </tr>
+            `
+        } )
+    }
+
+    displayData()
 
 
     let userForm = (event) => {
@@ -88,26 +145,37 @@
             "password": event.target.Upassword.value,
 
         }
-        if(userObj.name==""){
-           return alert("please enter name input")
-        }
 
-        if(userObj.email==""){
-           return alert("please enter email input")
-        }
+        // let a=10
+        //     a=55
+        // a=[10,55]
 
-        if(userObj.number==""){
-           return alert("please enter number input")
-        }
+        let oldData = JSON.parse(localStorage.getItem("wsb-164")) || []
 
-       
-        if(userObj.number.length<=10){
-            return alert("please enter Correct Number Formate")
-        }
+        let allData = [...oldData, userObj]
 
-        if(userObj.password==""){
-           return alert("please enter password input")
-        }
+        localStorage.setItem("wsb-164", JSON.stringify(allData))
+
+        // if(userObj.name==""){
+        //    return alert("please enter name input")
+        // }
+
+        // if(userObj.email==""){
+        //    return alert("please enter email input")
+        // }
+
+        // if(userObj.number==""){
+        //    return alert("please enter number input")
+        // }
+
+
+        // if(userObj.number.length<=10){
+        //     return alert("please enter Correct Number Formate")
+        // }
+
+        // if(userObj.password==""){
+        //    return alert("please enter password input")
+        // }
 
         /////////////////////////////////////////////////////////////
 
@@ -121,10 +189,13 @@
         //     nameError.innerHTML="Please Enter The Value"
         // }
 
-        
 
-        console.log(userObj)
+
+
     }
+
+
+
 
 </script>
 
