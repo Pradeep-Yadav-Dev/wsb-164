@@ -34,18 +34,21 @@
             font-size: 22px;
             outline: none;
             border: none;
+            cursor: pointer;
         }
 
         p {
             margin: 0px;
             color: red;
         }
-        table{
+
+        table {
             width: 100%;
             margin-top: 20px;
             text-align: center;
         }
-        table thead{
+
+        table thead {
             background-color: #ccc;
             font-weight: bold;
         }
@@ -84,18 +87,18 @@
 
         <!-- tabel -->
 
-        <table border="2"  >
+        <table border="2">
             <thead>
                 <td>Sr.</td>
                 <td>Name</td>
                 <td>Email</td>
                 <td>Number</td>
                 <td>Password</td>
-                <td></td>
+                <td> <button onclick="deleteAll()" > Delete All </button> </td>
             </thead>
 
             <tbody>
-                
+
             </tbody>
         </table>
     </div>
@@ -105,7 +108,7 @@
 </body>
 <script>
     let nameError = document.querySelector(".nameError")
-    let tbody=document.querySelector("tbody")
+    let tbody = document.querySelector("tbody")
 
     let test = document.querySelector(".test")
 
@@ -114,27 +117,31 @@
 
     // let sum=sum+1
     // sum+=1
+
+
     // display Data
     let displayData = () => {
         let localData = JSON.parse(localStorage.getItem("wsb-164")) || []
-        
-        localData.forEach( (v,i)=>{
-            tbody.innerHTML+=`
+
+         tbody.innerHTML=""
+
+        localData.forEach((v, i) => {
+            tbody.innerHTML += `
                 <tr>
-                    <td> ${i+1} </td>
-                    <td>ravi</td>
-                    <td>ravi@gmail.com</td>
-                    <td>1234567890</td>
-                    <td>Password@123</td>
-                    <td> <button> Delete </button> </td>
+                    <td> ${i + 1} </td>
+                    <td> ${v.name} </td>
+                    <td> ${v.email} </td>
+                    <td> ${v.number} </td>
+                    <td> ${v.password} </td>
+                    <td> <button onclick="deleteRow(${i})" > Delete </button> </td>
                 </tr>
             `
-        } )
+        })
     }
 
     displayData()
 
-
+    // submit data
     let userForm = (event) => {
         event.preventDefault() ///stop page refresh
 
@@ -155,6 +162,9 @@
         let allData = [...oldData, userObj]
 
         localStorage.setItem("wsb-164", JSON.stringify(allData))
+
+
+        displayData()
 
         // if(userObj.name==""){
         //    return alert("please enter name input")
@@ -192,6 +202,39 @@
 
 
 
+    }
+
+
+
+
+
+    // delete row
+
+    let deleteRow=(id)=>{
+
+        let localData = JSON.parse(localStorage.getItem("wsb-164")) || []
+     
+
+        let filterData=localData.filter((value,index)=>{
+            
+            if(index != id){
+                return value;
+            }
+           
+        })
+
+        localStorage.setItem("wsb-164",JSON.stringify(filterData))
+
+        alert("this row was deleted")
+        displayData()
+
+        
+    }
+
+
+    let deleteAll=()=>{
+       localStorage.clear()
+        displayData()
     }
 
 
