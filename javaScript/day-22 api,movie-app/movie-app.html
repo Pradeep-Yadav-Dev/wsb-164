@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            background-color: antiquewhite;
+        }
+
+        .main {
+            max-width: 1200px;
+            margin: auto;
+            border: 2px solid red;
+            padding: 10px;
+        }
+
+        input {
+            padding: 10px;
+            border: none;
+            outline: none;
+            width: 80%;
+        }
+
+        .allBox {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .box {
+            width: 23%;
+            margin: 1%;
+            background-color: rgb(151, 120, 73);
+        }
+
+        .box img {
+            width: 100%;
+        }
+
+        .innerbox {
+            padding: 5px;
+            display: flex;
+            justify-content: space-between;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="main">
+        <h1> Movie App </h1>
+
+        <div class="row"> <input type="text" placeholder="enter movie name"> </div>
+
+        <div class="allBox">
+
+
+
+
+        </div>
+    </div>
+</body>
+<script>
+
+    let allBox = document.querySelector(".allBox")
+
+    // show all movie
+    let imagePath="https://image.tmdb.org/t/p/w1280"
+    
+    const displayMovie = async () => {
+        let api = "https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=04c35731a5ee918f014970082a0088b1&page=1"
+
+        const fetchApi = await fetch(api)
+        const convertData = await fetchApi.json()
+        const allData = convertData.results
+
+        allData.forEach((v, i) => {
+            allBox.innerHTML += `
+                    <div class="box">
+                    <img src=${imagePath+v.poster_path} alt="">
+
+                    <div class="innerbox">
+                        <p> ${v.original_title} </p>
+                        <p> ${v.release_date} </p>
+                    </div>
+                </div>
+            `
+        })
+    }
+
+    displayMovie()
+
+    // sum=sum+1
+    // sum++
+    // ++sum
+    // sum+=1
+
+
+
+
+</script>
+
+</html>

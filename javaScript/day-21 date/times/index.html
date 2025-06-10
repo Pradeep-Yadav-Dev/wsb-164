@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .main {
+            width: 500px;
+            margin: 20px auto;
+            display: flex;
+            justify-content: space-evenly;
+            border: 2px solid #ccc;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="main">
+        <h1> 9 :</h1>
+        <h1> 45 :</h1>
+        <h1> 20 :</h1>
+        <h1> AM</h1>
+    </div>
+</body>
+<script>
+
+    let allH=document.querySelectorAll("h1")
+
+
+    setInterval(() => {
+
+        let allDate=new Date()
+        // console.log()
+        allH[2].innerHTML=allDate.getSeconds()
+
+    }, 1000)
+
+
+    // let test=()=>{
+    //      console.log("hello class")
+    // }
+
+    // test()
+
+    // setInterval(fnName,time)
+    //   let a=1;
+    // let myfn=setInterval(()=>{
+    //    a++
+    //    console.log(a)
+    // } ,2000 )
+
+
+    // clearInterval(myfn)
+    // console.log("stop")
+
+</script>
+
+</html>
