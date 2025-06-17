@@ -44,6 +44,22 @@
             display: flex;
             justify-content: space-between;
         }
+
+
+        .paginations{
+            width: 600px;
+            margin: auto;
+        }
+        .paginations ul{
+            list-style: none;
+            display: flex;
+            justify-content: space-evenly;
+        }
+        .paginations ul li button{
+            padding: 10px;
+            background-color: aqua;
+            font-weight: bold;
+        }
     </style>
 </head>
 
@@ -51,7 +67,7 @@
     <div class="main">
         <h1> Movie App </h1>
 
-        <div class="row"> <input type="text" placeholder="enter movie name"> </div>
+        <div class="row"> <input type="text" placeholder="enter movie name" class="searchInput" > </div>
 
         <div class="allBox">
 
@@ -59,22 +75,67 @@
 
 
         </div>
+
+        <div class="paginations">
+            <ul>
+               
+                
+            </ul>
+        </div>
     </div>
 </body>
 <script>
 
     let allBox = document.querySelector(".allBox")
 
+    let searchInput=document.querySelector(".searchInput")
+
+    let paginations=document.querySelector(".paginations ul")
+
+
+    // pagination
+
+    for(let i=1 ; i<=10 ; i++){
+        paginations.innerHTML +=`
+             <li> <Button  onclick="getPage(${i})" > ${i} </Button> </li>
+        `
+    }
+
+    let getPage=(pageN)=>{
+        
+        displayMovie("",pageN)
+    }
+
+    // search work
+    searchInput.addEventListener("keyup",(e)=>{
+        let searchMovieName=e.target.value
+
+        displayMovie(searchMovieName)
+    })
+
     // show all movie
     let imagePath="https://image.tmdb.org/t/p/w1280"
-    
-    const displayMovie = async () => {
-        let api = "https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=04c35731a5ee918f014970082a0088b1&page=1"
+    let api;
 
+    const displayMovie = async (searchMovieName,pageN=1) => {
+
+            
+
+        if(searchMovieName==undefined || searchMovieName=="" ){
+             api =`https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=04c35731a5ee918f014970082a0088b1&page=${pageN}`
+        }
+        else{
+             api=`https://api.themoviedb.org/3/search/movie?&api_key=04c35731a5ee918f014970082a0088b1&query=${searchMovieName}`
+        }
+
+
+        
         const fetchApi = await fetch(api)
         const convertData = await fetchApi.json()
         const allData = convertData.results
 
+
+        allBox.innerHTML=""
         allData.forEach((v, i) => {
             allBox.innerHTML += `
                     <div class="box">
@@ -91,10 +152,38 @@
 
     displayMovie()
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     // sum=sum+1
     // sum++
     // ++sum
     // sum+=1
+
+//////////////////////////////////////////////////////////////
+    // let data=(a,b)=>{
+    //     console.log(a,b)
+    // }
+
+
+    // data(10)
+
+    // data(_,55)
+
+   
 
 
 
