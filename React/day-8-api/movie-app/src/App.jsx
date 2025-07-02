@@ -112,3 +112,20 @@ function App() {
 }
 
 export default App
+
+
+4600 fee
+
+135 live class
+
+
+nimionline 
+
+2nd round -> 15 july 
+
+3rd -> 
+
+
+12km away from city
+
+name:kumba ram ji sir
