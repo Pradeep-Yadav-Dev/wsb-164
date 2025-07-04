@@ -1,0 +1,23 @@
+@import "tailwindcss";
+
+.slick-prev, .slick-next {
+    font-size: 30px !important;
+  
+    background: grey ;
+    border-radius: 50%;
+    width: 30px !important;
+    height: 30px !important;
+    z-index: 2;
+}
+.slick-prev:before, .slick-next:before {
+    color: grey !important;
+    font-size: 40px !important;
+
+}
+
+@layer utilities {
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+}
+
