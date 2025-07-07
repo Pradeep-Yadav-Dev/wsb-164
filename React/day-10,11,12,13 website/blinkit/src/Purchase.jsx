@@ -1,4 +1,4 @@
-import React, {  useContext, useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import Footer from './commons/Footer'
 import Header from './commons/Header'
 import { Link, useParams } from 'react-router-dom';
@@ -25,51 +25,63 @@ export default function Purchase() {
 
 
     ///////////////////////// use context
-    let {cart, setCart}=useContext(EcommContext)
+    let { cart, setCart } = useContext(EcommContext)
 
-  
 
-    let addtocart=(pData)=>{
-       
-        let cartObj={
-            id:pData.id,
-            img:pData.thumbnail,
-            brand:pData.brand,
-            title:pData.title,
-            price:pData.price,
-            qauntity:1
+
+    let addtocart = (pData) => {
+
+        let cartObj = {
+            id: pData.id,
+            img: pData.thumbnail,
+            brand: pData.brand,
+            title: pData.title,
+            price: pData.price,
+            qauntity: 1
         }
 
-        setCart([...cart,cartObj])
-        toast.success("Item Add Successfully")
-    }  
-    
-    
-//     let a=[{id:1} , {id:2 }]
+        let isItem = cart.some((v) => {
+            if (v.id == cartObj.id) {
+                return toast.warning("This Item Already In Your Cart")
+            }
 
-//     let b={id:2}
+        })
+
+        if (isItem == false) {
+            setCart([...cart, cartObj])
+            toast.success("Item Add Successfully")
+        }
 
 
 
-//    let isExist=a.some((v)=>{
-//         if(v.id==b.id){
-//             return true
-//         }
-//         else{
-//             return false
-//         }
-//    })
+    }
 
-//    console.log(isExist)
 
-    
+    //     let a=[{id:1} , {id:2 }]
+
+    //     let b={id:2}
+
+
+
+    //    let isExist=a.some((v)=>{
+    //         if(v.id==b.id){
+    //             return true
+    //         }
+    //         else{
+    //             return false
+    //         }
+    //    })
+
+    //    console.log(isExist)
+
+
 
     return (
         <>
 
             <Header />
 
-        <ToastContainer />
+            <ToastContainer />
 
             <section className='mt-2 pt-22'>
 
@@ -127,7 +139,7 @@ export default function Purchase() {
 
                         <div className="flex mt-[10px]">
                             <div>
-                                <button onClick={()=>addtocart(singleProduct)} type="button" class="focus:outline-none text-white bg-[#318616]  font-bold rounded-lg text-sm px-8 py-4 me-2 mb-2 ">Add To Cart</button>
+                                <button onClick={() => addtocart(singleProduct)} type="button" class="focus:outline-none text-white bg-[#318616]  font-bold rounded-lg text-sm px-8 py-4 me-2 mb-2 ">Add To Cart</button>
                             </div>
 
 
@@ -171,7 +183,7 @@ export default function Purchase() {
                 </div>
 
             </section>
-            
+
             <Footer />
 
         </>
