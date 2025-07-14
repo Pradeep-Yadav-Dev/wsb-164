@@ -1,0 +1,10 @@
+1.> home-----> "/"
+2.> for category page ------> "/categories/side-and-end-tables"
+3.> for product details page ----> "/product-details/hrithvik-stool"
+
+4.> for login and register page ----> "/login-register"
+5.> after login --------> "/my-dashboard"
+6.> cart -----> "/cart"
+7.> checkout ------> "/checkout"
+8.> extra ----> "/about-us"
+                "/frequently-questions"
