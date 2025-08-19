@@ -6,6 +6,7 @@ import Footer from '../../common/Footer'
 import { Link } from 'react-router-dom'
 import { MdFilterAltOff, MdModeEdit } from 'react-icons/md'
 import { FaFilter } from 'react-icons/fa'
+ import { ToastContainer, toast } from 'react-toastify';
 import axios from 'axios'
 
 export default function ViewMeterials() {
@@ -32,6 +33,21 @@ export default function ViewMeterials() {
             .then((ress) => {
                 console.log(ress.data)
                   displayData()
+                  toast.success(ress.data.message)
+            })
+            .catch((error) => {
+                console.error(error)
+            })
+    }
+
+    // /single-delete/:_id
+
+    let singleDeleteWork = (id) => {
+        axios.delete(`${import.meta.env.VITE_API_URL}material/single-delete/${id}`)
+            .then((ress) => {
+                
+                  displayData()
+                  toast.success(ress.data.message)
             })
             .catch((error) => {
                 console.error(error)
@@ -43,6 +59,7 @@ export default function ViewMeterials() {
     }, [])
     return (
         <>
+        <ToastContainer />
             <Breadcrumb path={"Material"} link={"/materials/view"} path2={"View"} slash={"/"} />
             <div className="w-full h-[610px]">
                 <div className="max-w-[1220px] mx-auto py-2">
@@ -174,11 +191,11 @@ export default function ViewMeterials() {
 
                                                                 <td className=" py-4">
 
-                                                                    <button type="button" className="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900">Delete </button>
+                                                                    <button onClick={()=>singleDeleteWork(v._id)} type="button" className="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900">Delete </button>
                                                                 </td>
                                                                 <td className=" py-4">
 
-                                                                    <Link to={`/material/update/${123}`} >
+                                                                    <Link to={`/material/update/${v._id}`} >
                                                                         <div className="rounded-[50%] w-[40px] h-[40px] flex items-center justify-center text-white bg-blue-700  border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
                                                                             <MdModeEdit className='text-[18px]' />
                                                                         </div>
