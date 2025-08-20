@@ -17,9 +17,43 @@ const addMaterial = async (req, res) => {
 
 const viewMaterial = async (req, res) => {
     try {
-        let data = await MaterialModal.find()
 
-        res.status(200).json({ message: "material view Successfully", data })
+        let searchValue = req.query.search;
+        let page = req.query.page || 1;
+        let limit = req.query.limit || 5;
+        let skip = (page - 1) * limit
+
+
+        let filterObj = {}
+
+        if (searchValue) {
+            if (isNaN(searchValue)) {
+                filterObj.materialName = { $regex: searchValue, $options: "i" }
+            }
+            else {
+                filterObj.order = Number(searchValue)
+            }
+        }
+
+
+        let data = await MaterialModal.find(filterObj)
+            .sort({ order: -1 })
+            .limit(limit)
+            .skip(skip)
+
+
+        let total = await MaterialModal.countDocuments(filterObj)
+
+
+        res.status(200).json({
+            message: "material view Successfully",
+            data,
+            skip,
+            limit,
+            total,
+            totalpage: Math.ceil(total / limit)
+
+        })
     }
     catch (error) {
         console.error(error)
@@ -30,11 +64,11 @@ const viewMaterial = async (req, res) => {
 const updateStatus = async (req, res) => {
     try {
 
-        
-        let currentStatus=await MaterialModal.findById(req.params)
-        let oldStatus=!(currentStatus.status)
 
-        await MaterialModal.findByIdAndUpdate(req.params , {$set:{status:oldStatus}})
+        let currentStatus = await MaterialModal.findById(req.params)
+        let oldStatus = !(currentStatus.status)
+
+        await MaterialModal.findByIdAndUpdate(req.params, { $set: { status: oldStatus } })
 
         res.status(200).json({ message: "Status Update Successfully" })
     }
@@ -44,8 +78,8 @@ const updateStatus = async (req, res) => {
     }
 }
 
-const singleDelete=async(req,res)=>{
-    try{
+const singleDelete = async (req, res) => {
+    try {
         await MaterialModal.findByIdAndDelete(req.params)
         res.status(200).json({ message: "Delete Successfully" })
     }
@@ -55,10 +89,13 @@ const singleDelete=async(req,res)=>{
     }
 }
 
-const multipalDelete=async(req,res)=>{
-    try{
-        
-        await MaterialModal.deleteMany({_id:req.body})
+const multipalDelete = async (req, res) => {
+    try {
+        if ((req.body).length == 0) {
+            return res.status(200).json({ message: "please select alt least one row" })
+        }
+
+        await MaterialModal.deleteMany({ _id: req.body })
         res.status(200).json({ message: "Delete Successfully" })
     }
     catch (error) {
@@ -67,12 +104,12 @@ const multipalDelete=async(req,res)=>{
     }
 }
 
-const fetchData=async(req,res)=>{
-    try{
-        
-        let data=await MaterialModal.findById(req.params)
-        
-        res.status(200).json({ message: "Fetch Successfully" ,data })
+const fetchData = async (req, res) => {
+    try {
+
+        let data = await MaterialModal.findById(req.params)
+
+        res.status(200).json({ message: "Fetch Successfully", data })
     }
     catch (error) {
         console.error(error)
@@ -80,12 +117,12 @@ const fetchData=async(req,res)=>{
     }
 }
 
-const editMaterial=async(req,res)=>{
-    try{
-       
-        await MaterialModal.findByIdAndUpdate(req.params ,{$set:req.body})
-        
-        res.status(200).json({ message: "Update Successfully"  })
+const editMaterial = async (req, res) => {
+    try {
+
+        await MaterialModal.findByIdAndUpdate(req.params, { $set: req.body })
+
+        res.status(200).json({ message: "Update Successfully" })
     }
     catch (error) {
         console.error(error)

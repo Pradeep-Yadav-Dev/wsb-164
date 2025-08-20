@@ -13,7 +13,10 @@ const materialSchema=new mongoose.Schema({
         type:Boolean,
         default:true
     }
-})
+},{
+    timestamps:true
+}
+)
 
 const MaterialModal=mongoose.model("Material",materialSchema)
 
