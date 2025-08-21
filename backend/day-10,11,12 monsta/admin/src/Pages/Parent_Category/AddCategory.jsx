@@ -24,9 +24,7 @@ export default function AddCategory() {
     formState: { errors },
   } = useForm();
 
-  const onSubmit = (data) => {
-    console.log(data);
-  };
+  
 
   // update work
   const [updateIdState,setUpdateIdState]=useState(false)
@@ -72,7 +70,7 @@ export default function AddCategory() {
           <h3 className="text-[26px] font-semibold bg-slate-100 py-3 px-4 rounded-t-md border border-slate-400">
             {updateIdState ? "Update Category" : "Add Category"}  
           </h3>
-          <form onSubmit={handleSubmit(onSubmit)} autoComplete="off" className="border border-t-0 p-3 rounded-b-md border-slate-400">
+          <form  autoComplete="off" className="border border-t-0 p-3 rounded-b-md border-slate-400">
             <div className="flex gap-5">
               <div className="w-1/3">
                 <label
@@ -84,12 +82,12 @@ export default function AddCategory() {
                 <input
                   type="file"
                   accept="image/*"
-                  {...register("categoryImage", { required: "Category image is required" })}
+                  name="parentCategoryImage"
                   id="categoryImage"
                   className="dropify"
                   data-height="250"
                 />
-                {errors.categoryImage && <p className="text-red-500">{errors.categoryImage.message}</p>}
+              
               </div>
               <div className="w-2/3">
                 <div className="mb-5">
@@ -101,12 +99,12 @@ export default function AddCategory() {
                   </label>
                   <input
                     type="text"
-                    {...register("categoryName", { required: "Category name is required" })}
+                    name="categoryName"
                     id="categoryName"
                     className="text-[19px] border-2 shadow-sm border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full py-2.5 px-3"
                     placeholder="Category Name"
                   />
-                  {errors.categoryName && <p className="text-red-500">{errors.categoryName.message}</p>}
+                  
                 </div>
                 <div className="mb-5">
                   <label
@@ -117,12 +115,30 @@ export default function AddCategory() {
                   </label>
                   <input
                     type="number"
-                    {...register("order", { required: "Order is required" })}
+                    name="order"
                     id="order"
                     className="text-[19px] border-2 shadow-sm border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full py-2.5 px-3"
                     placeholder="Order"
                   />
-                  {errors.order && <p className="text-red-500">{errors.order.message}</p>}
+                  
+                </div>
+
+                <div className="mb-5">
+                  <label
+                    htmlFor="order"
+                    className="block  text-md font-medium text-gray-900"
+                  >
+                    Slug
+                  </label>
+                  <input
+                    type="text"
+                    name="slug"
+                    
+                    id="order"
+                    className="text-[19px] border-2 shadow-sm border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full py-2.5 px-3"
+                    placeholder="slug-like-this"
+                  />
+                 
                 </div>
                 
               </div>

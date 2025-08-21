@@ -23,7 +23,8 @@ export default function ViewMeterials() {
     }
 
     const displayData = () => {
-        axios.get(`${import.meta.env.VITE_API_URL}material/view?search=${searchValue}&page=1&limit=5`)
+        axios.get(`${import.meta.env.VITE_API_URL}material/view?search=${searchValue}&page=1&limit=5
+            `)
             .then((ress) => {
                 setStore(ress.data.data)
                 console.log(ress.data)

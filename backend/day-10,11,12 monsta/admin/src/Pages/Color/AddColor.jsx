@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { ChromePicker } from "react-color";
 import { Link, useParams } from "react-router-dom";
+import axios from "axios";
 
 export default function AddColor() {
   const [color, setColor] = useState("#000000");
@@ -14,6 +15,8 @@ export default function AddColor() {
     setValue,
     formState: { errors },
   } = useForm();
+
+  console.log(color)
 
   useEffect(() => {
     if (updateIdState) {
@@ -28,10 +31,26 @@ export default function AddColor() {
     setColor(newColor.hex);
   };
 
-  const onSubmit = (data) => {
-    console.log("Form Data:", { ...data, color });
-    alert(`${updateIdState ? "Color Updated" : "Color Added"}: ${data.colorName} - ${color}`);
-  };
+  // colorCode
+
+  let saveForm=(e)=>{
+    e.preventDefault()
+
+    let formObj=new FormData(e.target)
+    formObj.append("colorCode",color)
+
+
+    axios.post(`${import.meta.env.VITE_API_URL}color/add`, formObj)
+      .then((ress) => {
+        console.log(ress)
+        alert("Data Added")
+      })
+      .catch((error) => {
+        console.error(error)
+      })
+  }
+
+ 
 
   return (
     <div className="w-full">
@@ -42,18 +61,19 @@ export default function AddColor() {
 
         <form
           className="p-3 border border-t-0 rounded-b-md border-slate-400"
-          onSubmit={handleSubmit(onSubmit)}
+          onSubmit={saveForm}
+         
         >
           {/* Color Name */}
           <div className="mb-5">
             <label className="block text-md font-medium text-gray-900">Color Name</label>
             <input
               type="text"
-              {...register("colorName", { required: "Color Name is required" })}
+              name="colorName"
               className="text-[19px] border-2 shadow-sm border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full py-2.5 px-3"
               placeholder="Enter Color Name"
             />
-            {errors.colorName && <p className="text-red-500 text-sm">{errors.colorName.message}</p>}
+          
           </div>
 
           {/* Color Picker */}
@@ -70,14 +90,11 @@ export default function AddColor() {
             <label className="block text-md font-medium text-gray-900">Order</label>
             <input
               type="number"
-              {...register("colorOrder", {
-                required: "Order is required",
-                min: { value: 1, message: "Order must be at least 1" },
-              })}
+              name="order"
               className="text-[19px] border-2 shadow-sm border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full py-2.5 px-3"
               placeholder="Enter Order"
             />
-            {errors.colorOrder && <p className="text-red-500 text-sm">{errors.colorOrder.message}</p>}
+            
           </div>
 
           {/* Submit Button */}
