@@ -12,6 +12,10 @@ const colorSchema=mongoose.Schema({
     order:{
          type:Number,
         default:true
+    },
+    status:{
+        type:Boolean,
+        default:true
     }
 },
 {timestamps:true}

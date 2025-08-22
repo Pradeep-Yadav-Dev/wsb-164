@@ -1,11 +1,15 @@
 const mongoose=require("mongoose")
 
-const parentCategorySchema=mongoose.Schema({
-    parentCategoryImage:{
+const subCategorySchema=mongoose.Schema({
+    subCategoryImage:{
         type:String,
         required:true
     },
-     parentCategoryName:{
+    parentCategory:{
+        type:mongoose.Schema.Types.ObjectId,
+        ref:"ParentCategory"
+    },
+     subCategoryName:{
         type:String,
         required:true
     },
@@ -26,7 +30,7 @@ const parentCategorySchema=mongoose.Schema({
      timestamps:true
 })
 
-const ParentCategory=mongoose.model("ParentCategory",parentCategorySchema)
+const SubCategory=mongoose.model("SubCategory",subCategorySchema)
 
 
-module.exports=ParentCategory
+module.exports=SubCategory
