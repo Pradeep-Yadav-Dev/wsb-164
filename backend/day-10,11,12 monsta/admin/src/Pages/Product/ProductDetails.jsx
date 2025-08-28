@@ -25,7 +25,6 @@ export default function ProductDetails() {
 
   // get active color
   const [storeColor, setStoreColor] = useState([])
-
   useEffect(()=>{
     axios.get(`${import.meta.env.VITE_API_URL}product/active-color`)
       .then((ress) => {
@@ -35,7 +34,6 @@ export default function ProductDetails() {
 
   // get material 
   const [storeMaterial, setStoreMaterial] = useState([])
-
   useEffect(()=>{
     axios.get(`${import.meta.env.VITE_API_URL}product/active-material`)
       .then((ress) => {
@@ -45,8 +43,6 @@ export default function ProductDetails() {
 
   // get active parent category 
   const [storeParentCategory, setStoreParentCategory] = useState([])
-
-
   useEffect(()=>{
     axios.get(`${import.meta.env.VITE_API_URL}product/active-parent-category`)
       .then((ress) => {
@@ -56,18 +52,43 @@ export default function ProductDetails() {
 
   // get sub category
   const [parentCatId,setParentCatId]=useState("")
-
   const [storeSubCategory, setStoreSubCategory] = useState([])
-  console.log(storeSubCategory)
+    useEffect(()=>{ 
+      
+        axios.get(`${import.meta.env.VITE_API_URL}product/active-sub-category/${parentCatId}`)
+          .then((ress) => {
+            setStoreSubCategory(ress.data.data)
+          })
+      
+    },[parentCatId])
 
-  useEffect(()=>{ 
-    
-      axios.get(`${import.meta.env.VITE_API_URL}product/active-sub-category/${parentCatId}`)
-        .then((ress) => {
-          setStoreSubCategory(ress.data.data)
+  // /active-sub-sub-category/:_id
+  const [subCatID,setSubCatID]=useState("")
+  const [storeSubSubCategory, setStoreSubSubCategory] = useState([])
+    useEffect(()=>{ 
+
+        axios.get(`${import.meta.env.VITE_API_URL}product/active-sub-sub-category/${subCatID}`)
+          .then((ress) => {
+            setStoreSubSubCategory(ress.data.data)
+          })
+      
+    },[subCatID])
+
+
+    // saveForm
+    let saveForm=(e)=>{
+      e.preventDefault();
+      let productForm=new FormData(e.target)
+      productForm.append("description",value)
+
+      axios.post(`${import.meta.env.VITE_API_URL}product/add`, productForm)
+        .then((res) => {
+          alert(res.data.message);
         })
-    
-  },[parentCatId])
+        .catch((err) => {
+          console.error(err);
+        });
+    }
 
   return (
     <section className="w-full">
@@ -98,7 +119,7 @@ export default function ProductDetails() {
 
       <div className='w-full px-6 py-6  '>
 
-        <form>
+        <form onSubmit={saveForm} >
           <div className="grid grid-cols-3 gap-[10px] ">
             {/* for left */}
             <div className="for-images ">
@@ -151,6 +172,7 @@ export default function ProductDetails() {
                   className="dropify"
                   data-height="160"
                   name='galleryImage'
+                  multiple
                 />
               
               </div>
@@ -184,6 +206,7 @@ export default function ProductDetails() {
                 </label>
                 <select
                   name='subCategory'
+                  onChange={(e)=>setSubCatID(e.target.value)}
                   className="text-[19px] text-[#76838f] border-2 shadow-sm border-gray-300 text-gray-900 text-sm rounded-lg block w-full py-2.5 px-3">
                   <option value="">Select Category</option>
                   
@@ -329,12 +352,13 @@ export default function ProductDetails() {
                   name='subSubCategory'
                   className="text-[19px] text-[#76838f] border-2 shadow-sm border-gray-300 text-gray-900 text-sm rounded-lg block w-full py-2.5 px-3">
                   <option value="">Nothing Selected</option>
+                  {storeSubSubCategory?.map((v)=>{
+                    return(
+                      <option key={v._id} value={v._id}>{v.subSubCategoryName}</option>
+                    )
+                  })}
 
-                  <option value="mobile">Mobile Phones</option>
-                  <option value="laptop">Laptops</option>
-
-                  <option value="men">Mens Wear</option>
-                  <option value="women">Womens Wear</option>
+                 
 
                 </select>
                 
