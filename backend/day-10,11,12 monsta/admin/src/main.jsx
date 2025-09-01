@@ -48,6 +48,7 @@ const route = createBrowserRouter(
     <>
       <Route path="/" element={<Login />} />
       <Route path="/" element={<RootLayout />}>
+      
         <Route path="home" element={<Home />} />
       </Route>
       <Route element={<RootLayout />}>
@@ -61,7 +62,7 @@ const route = createBrowserRouter(
           <Route path="view" element={<ViewColor />}></Route>
         </Route>
 
-        
+
         <Route path="material">
           <Route path="add" element={<Addmeterials />}></Route>
           <Route path="update/:id?" element={<UpdateMeterials />}></Route>

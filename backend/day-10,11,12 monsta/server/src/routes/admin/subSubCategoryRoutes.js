@@ -10,7 +10,7 @@ const subSubCategoryRouter=express.Router()
 
 subSubCategoryRouter.post("/add",upload.single("subSubCategoryImage") ,addSubSubCategory)
 subSubCategoryRouter.get("/active-parent-category",activeParentCategory)
-subSubCategoryRouter.get("/active-sub-category/:_id",activeSubCategory)
+subSubCategoryRouter.get("/active-sub-category/:id",activeSubCategory)
 subSubCategoryRouter.get("/view",viewSubSubCategory)
 
 

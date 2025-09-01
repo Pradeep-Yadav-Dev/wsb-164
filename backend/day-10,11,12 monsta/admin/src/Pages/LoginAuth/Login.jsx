@@ -2,18 +2,26 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
+import Cookies from "js-cookie";
 
 export default function Login() {
   const navigate = useNavigate();
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm();
+ 
 
-  const onSubmit = (data) => {
-    navigate("/dashboard");
-  };
+  let saveForm=(e)=>{
+    e.preventDefault();
+
+    axios.post(`${import.meta.env.VITE_API_URL}login`, e.target)
+    .then((ress)=>{
+      alert(ress.data.message);
+      console.log(ress.data.token);
+      Cookies.set("token", ress.data.token);
+      navigate("/dashboard");
+    });
+  }
+
+  
 
   return (
     <section className="bg-gray-50">
@@ -29,8 +37,8 @@ export default function Login() {
           />
           
         </a>
-        <form autoComplete="off"
-          onSubmit={handleSubmit(onSubmit)}
+        <form onSubmit={saveForm}
+          
           className="w-[500px] bg-white rounded-lg shadow-2xl p-6 space-y-4"
         >
           <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl">
@@ -46,13 +54,13 @@ export default function Login() {
             <input
               type="email"
               id="email"
-              {...register("email", { required: "Email is required" })}
+              name="email"
+
+             
               className="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
               placeholder="Enter Email"
             />
-            {errors.email && (
-              <p className="text-red-500 text-sm mt-1">{errors.email.message}</p>
-            )}
+            
           </div>
           <div>
             <label
@@ -64,13 +72,12 @@ export default function Login() {
             <input
               type="password"
               id="password"
-              {...register("password", { required: "Password is required" })}
+              name="password"
+
               className="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
               placeholder="Enter Password"
             />
-            {errors.password && (
-              <p className="text-red-500 text-sm mt-1">{errors.password.message}</p>
-            )}
+            
           </div>
           <button
             type="submit"
