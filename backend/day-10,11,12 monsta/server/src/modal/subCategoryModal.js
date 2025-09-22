@@ -30,6 +30,15 @@ const subCategorySchema = mongoose.Schema({
     timestamps: true
 })
 
+subCategorySchema.virtual("childTwo",{
+    ref:"SubSubCategory",
+    localField:"_id",
+    foreignField:"subCategory",
+})
+
+subCategorySchema.set("toJSON", {virtuals: true})
+subCategorySchema.set("toObject", {virtuals: true})
+
 const SubCategory = mongoose.model("SubCategory", subCategorySchema)
 
 

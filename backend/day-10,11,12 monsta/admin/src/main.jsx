@@ -40,6 +40,7 @@ import Users from "./Pages/Users.jsx";
 import Newsletters from "./Pages/NewsLetters.jsx";
 import Enquiry from "./Pages/Enquirys.jsx";
 import UpdateMeterials from "./Pages/Meterials/UpdateMeterials.jsx";
+import Context from "./contextWork/Context.jsx";
 
 
 
@@ -142,6 +143,8 @@ const route = createBrowserRouter(
 );
 createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <RouterProvider router={route}></RouterProvider>
+    <Context>
+      <RouterProvider router={route}></RouterProvider>
+    </Context>
   </StrictMode>
 );

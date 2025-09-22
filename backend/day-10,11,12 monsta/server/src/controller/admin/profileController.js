@@ -1,6 +1,7 @@
 const Profile = require("../../modal/profileModal")
 const bcrypt = require('bcrypt');
 var jwt = require('jsonwebtoken');
+const filePath = "http://localhost:5600/uploads/"
 
 const registerAdmin=async(req,res)=>{
     try{
@@ -50,8 +51,24 @@ const loginAdmin=async(req,res)=>{
             {expiresIn: "6h"}
         )
 
-        res.status(200).json({message: "Login successful", token: jwtToken})
+        res.status(200).json({message: "Login successful", token: jwtToken ,status:true })
 
+    }
+    catch(error){
+        console.error(error)
+        res.status(500).json({message: error.message})
+    }
+}
+
+
+
+
+const viewProfile=async(req,res)=>{
+    try{
+       
+        let data=await Profile.findOne({email:req.user}).select("name email profileImage phone")
+        
+        res.status(200).json({message: "Profile fetched successfully" , data ,filePath})
     }
     catch(error){
         console.error(error)
@@ -61,5 +78,7 @@ const loginAdmin=async(req,res)=>{
 
 module.exports={
     loginAdmin,
+    viewProfile,
     registerAdmin
-}
+}   
+    

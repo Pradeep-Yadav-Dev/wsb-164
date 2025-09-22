@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Breadcrumb from "../common/Breadcrumb";
 import { IoPhonePortrait } from "react-icons/io5";
 import { MdEmail } from "react-icons/md";
@@ -6,10 +6,15 @@ import { useForm } from "react-hook-form";
 import $ from "jquery";
 import "dropify/dist/css/dropify.min.css";
 import "dropify/dist/js/dropify.min.js";
+import { AdminContext } from "../contextWork/Context";
 
 export default function Profile() {
 
   const [activeTab, setActiveTab] = useState("editProfile");
+
+  let {profileStore , filePath}=useContext(AdminContext)
+
+  console.log(profileStore , filePath)
 
 
   useEffect(() => {
@@ -42,18 +47,18 @@ export default function Profile() {
           <div className="py-[40px] text-center">
             <img
               className="w-[80px] h-[80px] mx-auto rounded-full"
-              src="https://wscubetech.co/Assignments/furniture/storage/app/public/uploads/images/users/59c32aee-61e4-4868-b27c-e9339ab54e9a-1670132624.jpg"
+              src={profileStore?.profileImage}
               alt="Profile"
             />
-            <h5 className="pt-[6px]">Admin</h5>
+            <h5 className="pt-[6px]"> {profileStore?.name} </h5>
           </div>
           <div className="bg-[#F6F9FD] p-[20px]  rounded-lg shadow-md">
             <h4 className="py-[8px] font-bold">Contact Information</h4>
             <p className="flex items-center gap-[8px] py-[6px]">
-              <IoPhonePortrait /> 1234567890
+              <IoPhonePortrait /> {profileStore?.phone}
             </p>
             <p className="flex items-center gap-[8px] py-[6px]">
-              <MdEmail /> xyz@gmail.com
+              <MdEmail /> {profileStore?.email}
             </p>
           </div>
         </div>

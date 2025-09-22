@@ -26,6 +26,17 @@ const parentCategorySchema=mongoose.Schema({
      timestamps:true
 })
 
+parentCategorySchema.virtual("childOne" , {
+    ref:"SubCategory",
+    localField:"_id",
+    foreignField:"parentCategory"
+})
+
+parentCategorySchema.set("toJSON", {virtuals: true})
+parentCategorySchema.set("toObject", {virtuals: true})
+
+
+
 const ParentCategory=mongoose.model("ParentCategory",parentCategorySchema)
 
 

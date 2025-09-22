@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
@@ -7,21 +7,36 @@ import Cookies from "js-cookie";
 
 export default function Login() {
   const navigate = useNavigate();
- 
 
-  let saveForm=(e)=>{
+
+  let saveForm = (e) => {
     e.preventDefault();
 
     axios.post(`${import.meta.env.VITE_API_URL}login`, e.target)
-    .then((ress)=>{
-      alert(ress.data.message);
-      console.log(ress.data.token);
-      Cookies.set("token", ress.data.token);
-      navigate("/dashboard");
-    });
+      .then((ress) => {
+        alert(ress.data.message);
+
+        Cookies.set("token", ress.data.token);
+
+        if (ress.data.status == true) {
+          navigate("/dashboard");
+        }
+
+        
+       
+
+      });
   }
 
-  
+
+
+
+
+
+
+
+
+
 
   return (
     <section className="bg-gray-50">
@@ -35,10 +50,10 @@ export default function Login() {
             src="https://www.wscubetech.com/images/wscube-tech-logo-2.svg"
             alt="logo"
           />
-          
+
         </a>
         <form onSubmit={saveForm}
-          
+
           className="w-[500px] bg-white rounded-lg shadow-2xl p-6 space-y-4"
         >
           <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl">
@@ -56,11 +71,11 @@ export default function Login() {
               id="email"
               name="email"
 
-             
+
               className="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
               placeholder="Enter Email"
             />
-            
+
           </div>
           <div>
             <label
@@ -77,7 +92,7 @@ export default function Login() {
               className="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
               placeholder="Enter Password"
             />
-            
+
           </div>
           <button
             type="submit"

@@ -45,7 +45,7 @@ const activeParentCategory = async (req, res) => {
 const activeSubCategory = async (req, res) => {
     try {
 
-        let data = await SubCategory.find({ status: true, parentCategory: req.params }).select("subCategoryName")
+        let data = await SubCategory.find({ status: true, parentCategory: req.params.id }).select("subCategoryName")
 
 
         res.status(200).json({ message: "Active Sub Category View Successfully....", data })
