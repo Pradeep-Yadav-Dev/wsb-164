@@ -1,21 +1,48 @@
-"use client";
-import Link from "next/link";
-import React from "react";
-import { Col, Container, Row } from "react-bootstrap";
-import "./my-dashboard.css";
+'use client'
+import Link from 'next/link';
+import React, { useState, useEffect } from 'react';
+import { Col, Container, Row } from 'react-bootstrap';
+import axios from 'axios';
+import Cookies from 'js-cookie';
 
 export default function DashboardPage() {
+    const [activeTab, setActiveTab] = useState('dashboard');
+    const [selectedTitle, setSelectedTitle] = useState("Mr.");
+    const [orders, setOrders] = useState([]);
+    const [loadingOrders, setLoadingOrders] = useState(true);
+
+    // console.log(orders)
+
+    // Fetch orders when Orders tab is active
+    useEffect(() => {
+        if (activeTab === 'orders') {
+            const fetchOrders = async () => {
+                try {
+                    const { data } = await axios.get(
+                        `${process.env.NEXT_PUBLIC_URL}order/get-orders`,
+                        { headers: { "auth": `Bearer ${Cookies.get('monsta-website-164')}` } }
+                    );
+                    // console.log(data)
+                    setOrders(data.orders.history || []);
+                    setLoadingOrders(false);
+                } catch (err) {
+                    console.error(err);
+                    setLoadingOrders(false);
+                }
+            };
+            fetchOrders();
+        }
+    }, [activeTab]);
+
     return (
         <>
-            <Container fluid className="breadcrumbs_area">
-                <Container className="breadcrumb_content">
+            <Container fluid className='breadcrumbs_area'>
+                <Container className='breadcrumb_content'>
                     <Row>
                         <Col lg={12}>
                             <h3>My Dashboard</h3>
-                            <ul className="p-0">
-                                <li>
-                                    <Link href="/">home</Link>
-                                </li>
+                            <ul className='p-0'>
+                                <li><Link href="/">home</Link></li>
                                 <li>&gt;</li>
                                 <li>My Dashboard</li>
                             </ul>
@@ -24,97 +51,131 @@ export default function DashboardPage() {
                 </Container>
             </Container>
 
-            {/* Main Content */}
-            <section className="main_content_area">
+            <Container fluid className='py-5 border-bottom'>
                 <Container>
-                    <div className="account_dashboard">
-                        <Row>
-                            {/* Sidebar */}
-                            <Col sm={12} md={3} lg={3}>
-                                <div className="dashboard_tab_button">
-                                    <ul className="nav flex-column dashboard-list" role="tablist">
-                                        <li className="nav-item">
-                                            <Link href="" className="nav-link">
-                                                My Dashboard
-                                            </Link>
+                    <Row>
+                        {/* Sidebar */}
+                        <Col lg={3} className='dashboard_tab_button'>
+                            <ul className='nav flex-column dashboard-list'>
+                                <li>
+                                    <a onClick={() => setActiveTab('dashboard')} className={`nav-link ${activeTab === 'dashboard' ? 'active' : ''}`}>
+                                        My Dashboard
+                                    </a>
+                                </li>
+                                <li>
+                                    <a onClick={() => setActiveTab('orders')} className={`nav-link ${activeTab === 'orders' ? 'active' : ''}`}>
+                                        Orders
+                                    </a>
+                                </li>
+                                <li>
+                                    <a onClick={() => setActiveTab('address')} className={`nav-link ${activeTab === 'address' ? 'active' : ''}`}>
+                                        Address
+                                    </a>
+                                </li>
+                                <li>
+                                    <a onClick={() => setActiveTab('profile')} className={`nav-link ${activeTab === 'profile' ? 'active' : ''}`}>
+                                        My Profile
+                                    </a>
+                                </li>
+                                <li>
+                                    <a onClick={() => setActiveTab('password')} className={`nav-link ${activeTab === 'password' ? 'active' : ''}`}>
+                                        Change Password
+                                    </a>
+                                </li>
+                                <li>
+                                    <Link href="/" className='nav-link'>Logout</Link>
+                                </li>
+                            </ul>
+                        </Col>
 
-
-                                        </li>
-                                        <li className="nav-item">
-                                            <Link href="" className="nav-link">
-                                                Orders
-                                            </Link>
-
-
-                                        </li>
-                                        <li className="nav-item">
-                                            <Link href="" className="nav-link">
-                                                Addresses
-                                            </Link>
-
-
-                                        </li>
-                                        <li className="nav-item">
-                                            <Link href="" className="nav-link">
-                                                My Profile
-                                            </Link>
-
-
-                                        </li>
-                                        <li className="nav-item">
-                                            <Link href="" className="nav-link">
-                                                Change Password
-                                            </Link>
-
-
-                                        </li>
-                                        <li className="nav-item">
-                                            <Link href="" className="nav-link">
-                                                Logout
-                                            </Link>
-                                        </li>
-                                    </ul>
+                        {/* Main Content */}
+                        <Col lg={9}>
+                            {/* Dashboard Content */}
+                            {activeTab === 'dashboard' && (
+                                <div className='tab-content dashboard_content'>
+                                    <h3>My Dashboard</h3>
+                                    <p>From your account dashboard, you can easily check & view your recent orders, manage your shipping and billing addresses, and edit your password and account details.</p>
                                 </div>
-                            </Col>
+                            )}
 
-                            {/* Tab Content */}
-                            <Col sm={12} md={9} lg={9}>
-                                <div className="tab-content dashboard_content">
-                                    <div className="tab-pane fade show active" id="dashboard" role="tabpanel">
-                                        <h3>My Dashboard</h3>
-                                        <p>
-                                            From your account dashboard, you can easily check &amp; view your{" "}
-                                            <Link href="#">recent orders</Link>, manage your{" "}
-                                            <Link href="#">shipping and billing addresses</Link>, and{" "}
-                                            <Link href="#">edit your password and account details</Link>.
-                                        </p>
-                                    </div>
+                            {/* Orders Content */}
+                            {activeTab === 'orders' && (
+                                <div className='tab-content dashboard_content'>
+                                    <h3>Orders</h3>
+                                    <div className='table-responsive order'>
+                                        {loadingOrders ? (
+                                            <p>Loading orders...</p>
+                                        ) : orders.length === 0 ? (
+                                            <p>No orders found</p>
+                                        ) : (
+                                            <table className="table">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Order</th>
+                                                        <th>Date</th>
+                                                        <th>Status</th>
+                                                        <th>Total</th>
+                                                        <th>Actions</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    {orders?.map((order, index) => {
 
-                                    <div className="tab-pane fade" id="orders" role="tabpanel">
-                                        <h3>Orders</h3>
-                                        <p>Your order history will appear here.</p>
-                                    </div>
-
-                                    <div className="tab-pane fade" id="address" role="tabpanel">
-                                        <h3>Addresses</h3>
-                                        <p>Manage your shipping and billing addresses here.</p>
-                                    </div>
-
-                                    <div className="tab-pane fade" id="my-profile" role="tabpanel">
-                                        <h3>My Profile</h3>
-                                        <p>Edit your profile information here.</p>
-                                    </div>
-
-                                    <div className="tab-pane fade" id="change-password" role="tabpanel">
-                                        <h3>Change Password</h3>
-                                        <p>Change your password here.</p>
+                                                            console.log(order);
+                                                            
+                                                        
+                                                        return (
+                                                            <tr key={order._id}>
+                                                                <td>{index + 1}</td>
+                                                                <td>{new Date(order.createdAt).toLocaleDateString()}</td>
+                                                                <td>
+                                                                    <span >
+                                                                        {order?.paymentStatus}
+                                                                    </span>
+                                                                </td>
+                                                                <td>
+                                                                    Rs. {order?.totalAmount}
+                                                                </td>
+                                                                <td>
+                                                                    <Link href={`/order-details/${order._id}`} className="view">view</Link>
+                                                                </td>
+                                                            </tr>
+                                                        );
+                                                    })}
+                                                </tbody>
+                                            </table>
+                                        )}
                                     </div>
                                 </div>
-                            </Col>
-                        </Row>
-                    </div>
+                            )}
+
+                            {/* Address Content */}
+                            {activeTab === 'address' && (
+                                <div className='tab-content dashboard_content'>
+                                    <p>The following addresses will be used on the checkout page by default.</p>
+                                    {/* Address forms can go here */}
+                                </div>
+                            )}
+
+                            {/* Profile Content */}
+                            {activeTab === 'profile' && (
+                                <div className='tab-content dashboard_content'>
+                                    <h3>My Profile</h3>
+                                    {/* Profile form */}
+                                </div>
+                            )}
+
+                            {/* Change Password Content */}
+                            {activeTab === 'password' && (
+                                <div className='tab-content dashboard_content'>
+                                    <h3>Change Password</h3>
+                                    {/* Password form */}
+                                </div>
+                            )}
+                        </Col>
+                    </Row>
                 </Container>
-            </section>
+            </Container>
         </>
     );
 }
