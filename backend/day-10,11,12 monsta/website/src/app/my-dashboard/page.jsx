@@ -121,13 +121,21 @@ export default function DashboardPage() {
                                                 <tbody>
                                                     {orders?.map((order, index) => {
 
-                                                            console.log(order);
-                                                            
-                                                        
                                                         return (
                                                             <tr key={order._id}>
                                                                 <td>{index + 1}</td>
-                                                                <td>{new Date(order.createdAt).toLocaleDateString()}</td>
+                                                                <td>
+                                                                    {order?.billingAddress?.date
+                                                                        ? new Date(order.billingAddress.date).toLocaleDateString("en-IN", {
+                                                                            day: "2-digit",
+                                                                            month: "2-digit",
+                                                                            year: "numeric",
+                                                                        })
+                                                                        : "-"}
+                                                                </td>
+
+
+
                                                                 <td>
                                                                     <span >
                                                                         {order?.paymentStatus}

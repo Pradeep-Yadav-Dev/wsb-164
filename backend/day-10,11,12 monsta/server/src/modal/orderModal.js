@@ -15,7 +15,8 @@ let orderSchema = mongoose.Schema({
                 country: { type: String, default: "India" },
                 state: { type: String },
                 city: { type: String },
-                notes: { type: String }
+                notes: { type: String },
+                date:{type: Date, default: Date.now()}
             },
 
 
